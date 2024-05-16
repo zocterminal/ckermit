@@ -1619,8 +1619,9 @@ scanfile(name,flag,nscanfile) char * name; int * flag, nscanfile; {
 #endif /* DEBUG */
 		binary = 1;
 		break;
+	    }
 #ifndef NOPCLSCAN
-	    } else if (!ckstrcmp((char *)buf,") HP-PCL",8,1)) {
+	    else if (!ckstrcmp((char *)buf,") HP-PCL",8,1)) {
 		/* HP PCL printer language */
 #ifdef DEBUG
 		int i;
@@ -1637,7 +1638,7 @@ scanfile(name,flag,nscanfile) char * name; int * flag, nscanfile; {
 	    } 
 #endif /* NOPCLSCAN */
 #ifndef NOPJLSCAN
-	      else if (buf[0] == '\033' && (buf[1] == 'E' || buf[1] == '%')) {
+	    else if (buf[0] == '\033' && (buf[1] == 'E' || buf[1] == '%')) {
 		/* Ditto for PJL Job printer header */
 #ifdef DEBUG
 		int i;
@@ -1651,8 +1652,8 @@ scanfile(name,flag,nscanfile) char * name; int * flag, nscanfile; {
 #endif /* DEBUG */
 		binary = 1;
 		break;
-#endif /* NOPJLSCAN */
 	    }
+#endif /* NOPJLSCAN */
 	}
 
 #ifdef UNICODE
